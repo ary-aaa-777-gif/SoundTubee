@@ -1,0 +1,24 @@
+{
+    "Edit": {
+        "cover": "",
+        "children": {
+            "BMW": {
+                "cover": "",
+                "children": []
+            },
+            "Kenedi": {
+                "cover": "",
+                "children": []
+            }
+        }
+    },
+    "Meme": {
+        "cover": "",
+        "children": {
+            "Persian": {
+                "cover": "",
+                "children": []
+            }
+        }
+    }
+}

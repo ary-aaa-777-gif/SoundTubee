@@ -1,0 +1,705 @@
+﻿```css
+/* ==========================
+   MUSIC PLAYER
+========================== */
+
+html,
+body,
+*{
+    -webkit-tap-highlight-color:transparent !important;
+    tap-highlight-color:transparent !important;
+}
+
+a,
+button,
+label,
+[role="button"]{
+    -webkit-tap-highlight-color:transparent !important;
+    tap-highlight-color:transparent !important;
+
+    -webkit-touch-callout:none;
+
+    -webkit-user-select:none;
+    user-select:none;
+}
+
+a:focus,
+a:focus-visible,
+a:active,
+button:focus,
+button:focus-visible,
+button:active,
+[role="button"]:focus,
+[role="button"]:focus-visible,
+[role="button"]:active{
+    outline:none !important;
+    box-shadow:none !important;
+
+    -webkit-tap-highlight-color:transparent !important;
+    tap-highlight-color:transparent !important;
+}
+
+button{
+    -webkit-appearance:none !important;
+    appearance:none !important;
+}
+
+a:active,
+button:active,
+[role="button"]:active{
+    filter:none !important;
+    opacity:1 !important;
+}
+
+
+.music-player{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:75px;
+
+    background:#161616;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:10px 20px;
+
+    box-sizing:border-box;
+
+    z-index:9999;
+
+    border-bottom:1px solid #333;
+
+    color:white;
+
+}
+
+.player-cover{
+    flex-shrink:0;
+}
+
+.player-cover img{
+    width:55px;
+
+    height:55px;
+
+    border-radius:8px;
+
+    object-fit:cover;
+}
+
+.player-center{
+    flex:1;
+
+    min-width:0;
+
+    overflow:hidden;
+}
+
+.player-info{
+    min-width:0;
+
+    overflow:hidden;
+}
+
+#player-title{
+    font-size:16px;
+
+    font-weight:bold;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+#player-artist{
+    font-size:13px;
+
+    color:#aaa;
+
+    margin-top:5px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* ==========================
+   PLAYER CONTROLS
+========================== */
+
+.player-controls{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-shrink:0;
+}
+
+.player-controls button{
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#e50914;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.2s;
+}
+
+.player-controls button:hover{
+    transform:scale(1.08);
+}
+
+
+/* ==========================
+   PROGRESS BAR
+========================== */
+
+.player-progress{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:12px;
+
+    color:#aaa;
+
+    margin-top:8px;
+}
+
+#music-progress{
+    width:100%;
+
+    cursor:pointer;
+}
+
+#main-audio{
+    display:none;
+}
+
+
+/* ==========================
+   MUSIC CARDS
+========================== */
+
+.music-card{
+    overflow:hidden;
+}
+
+.music-card button,
+.music-card a{
+    max-width:100%;
+
+    box-sizing:border-box;
+}
+
+.music-title,
+.music-artist{
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+}
+
+.download-btn{
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+
+/* ==========================
+   MOBILE VERSION
+========================== */
+
+@media(max-width:600px){
+
+.music-player{
+    height:70px;
+
+    padding:8px;
+
+    gap:8px;
+}
+
+.player-cover img{
+    width:50px;
+
+    height:50px;
+}
+
+.player-center{
+    flex:1;
+
+    min-width:0;
+}
+
+.player-info{
+    max-width:130px;
+}
+
+#player-title{
+    font-size:14px;
+
+    max-width:130px;
+}
+
+#player-artist{
+    font-size:12px;
+
+    max-width:130px;
+}
+
+.player-progress{
+    display:none;
+}
+
+.player-controls{
+    gap:5px;
+}
+
+.player-controls button{
+    width:32px;
+
+    height:32px;
+
+    font-size:15px;
+}
+
+}
+
+
+/* ==========================
+   VERY SMALL SCREENS
+========================== */
+
+@media(max-width:380px){
+
+.player-cover img{
+    width:45px;
+
+    height:45px;
+}
+
+#player-title{
+    max-width:100px;
+}
+
+#player-artist{
+    max-width:100px;
+}
+
+.player-controls button{
+    width:30px;
+
+    height:30px;
+}
+
+}
+
+
+/* ==========================
+   MUSIC CARD MOBILE FIX
+========================== */
+
+.music-card{
+    width:100%;
+
+    max-width:100%;
+
+    overflow:hidden;
+
+    box-sizing:border-box;
+}
+
+.music-card img{
+    max-width:100%;
+
+    height:auto;
+
+    object-fit:cover;
+}
+
+.music-info{
+    min-width:0;
+
+    overflow:hidden;
+
+    flex:1;
+}
+
+.music-title,
+.music-artist{
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+
+    max-width:100%;
+}
+
+.music-card{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.music-actions{
+    flex-shrink:0;
+}
+
+@media(max-width:600px){
+
+.music-card{
+    gap:8px;
+
+    padding:10px;
+}
+
+.music-card img{
+    width:55px;
+
+    height:55px;
+}
+
+.music-title{
+    font-size:14px;
+}
+
+.music-artist{
+    font-size:12px;
+}
+
+}
+
+
+/* ==========================
+   MOBILE MUSIC LIST FIX
+========================== */
+
+.song-row{
+    width:100%;
+
+    max-width:100%;
+
+    box-sizing:border-box;
+
+    overflow:hidden;
+}
+
+.song-info{
+    flex:1;
+
+    min-width:0;
+
+    overflow:hidden;
+}
+
+.song-name,
+.song-artist{
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    max-width:100%;
+}
+
+.song-buttons{
+    flex-shrink:0;
+
+    display:flex;
+
+    gap:6px;
+}
+
+.song-buttons button{
+    flex-shrink:0;
+
+    width:38px;
+
+    height:38px;
+
+    padding:0;
+}
+
+@media(max-width:600px){
+
+.song-row{
+    height:75px;
+
+    gap:8px;
+
+    padding:8px;
+}
+
+.song-cover{
+    width:55px;
+
+    height:55px;
+}
+
+.song-name{
+    font-size:14px;
+}
+
+.song-artist{
+    font-size:12px;
+}
+
+.song-buttons button{
+    width:32px;
+
+    height:32px;
+
+    font-size:15px;
+}
+
+}
+
+
+/* ==========================
+   MOBILE PLAYER PROGRESS
+========================== */
+
+@media(max-width:600px){
+
+.music-player{
+    height:90px;
+
+    padding-bottom:20px;
+}
+
+.player-progress{
+    display:flex;
+
+    position:absolute;
+
+    bottom:3px;
+
+    left:10px;
+
+    right:10px;
+
+    height:15px;
+}
+
+.player-progress input{
+    width:100%;
+}
+
+}
+
+
+/* ==========================
+   MUSIC SEARCH
+========================== */
+
+.music-search{
+    display:flex;
+
+    gap:10px;
+
+    margin:20px 0;
+}
+
+.music-search input{
+    flex:1;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    border:none;
+
+    background:#222;
+
+    color:white;
+
+    font-size:15px;
+}
+
+.music-search button{
+    width:45px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#e50914;
+
+    color:white;
+
+    font-size:18px;
+}
+
+@media(max-width:600px){
+
+.music-search{
+    margin-top:90px;
+}
+
+.music-search input{
+    font-size:14px;
+}
+
+}
+
+
+/* ==========================
+   DESKTOP MUSIC CARD STYLE
+========================== */
+
+@media(min-width:601px){
+
+.song-row{
+    height:100px;
+
+    padding:15px 20px;
+
+    gap:20px;
+
+    border:1px solid #2b2b2b;
+
+    transition:.25s;
+}
+
+.song-row:hover{
+    transform:translateY(-3px);
+
+    background:#1c1c1c;
+}
+
+.song-cover{
+    width:80px;
+
+    height:80px;
+
+    border-radius:12px;
+}
+
+.song-info{
+    min-width:0;
+
+    flex:1;
+}
+
+.song-name{
+    font-size:20px;
+
+    max-width:450px;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+}
+
+.song-artist{
+    font-size:15px;
+
+    margin-top:5px;
+
+    max-width:450px;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+}
+
+.song-likes{
+    font-size:14px;
+}
+
+.song-buttons{
+    flex-shrink:0;
+
+    gap:12px;
+}
+
+.song-buttons button{
+    width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0;
+}
+
+.play-song{
+    font-size:22px!important;
+}
+
+
+/* ==========================
+   FINAL TOUCH FIX
+========================== */
+
+a:active,
+button:active,
+.song-buttons button:active,
+.player-controls button:active,
+.music-search button:active{
+    outline:none !important;
+
+    box-shadow:none !important;
+
+    background-image:none !important;
+
+    filter:none !important;
+
+    opacity:1 !important;
+}
+
+}
+```
